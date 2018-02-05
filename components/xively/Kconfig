@@ -1,0 +1,30 @@
+menuconfig XIVELY_CLIENT
+    bool "Xively Client"
+    default y
+
+menu "Client Debug Options"
+    depends on XIVELY_CLIENT
+
+config XI_DEBUG_OUTPUT
+    bool "Client Debug Logs"
+    default n
+
+config XI_DEBUG_EXTRA_INFO
+    bool "Verbose Client Debug Logs"
+    default n
+
+config XI_DEBUG_ASSERT
+    bool "Client Asserts"
+    default n
+
+endmenu #"Client Debug Logs"
+
+config XI_SECURE_FILE_TRANSFER_ENABLED
+    bool "Over The Air updates"
+    default y
+    depends on XIVELY_CLIENT
+
+#config XI_MODULE_THREAD_ENABLED
+#    bool "Thread Safety"
+#    default y
+#    depends on XIVELY_CLIENT

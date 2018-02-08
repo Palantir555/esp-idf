@@ -6,23 +6,37 @@ menu "Client Debug Options"
     depends on XIVELY_CLIENT
 
 config XI_DEBUG_OUTPUT
-    bool "Client Debug Logs"
+    bool "Library Debug Logs"
+    default n
+
+config XI_BSP_DEBUG_OUTPUT
+    bool "BSP Debug Logs"
     default n
 
 config XI_DEBUG_EXTRA_INFO
-    bool "Verbose Client Debug Logs"
+    bool "Verbose Debug Logs"
     default n
 
 config XI_DEBUG_ASSERT
-    bool "Client Asserts"
+    bool "Asserts"
     default n
 
 endmenu #"Client Debug Logs"
 
 config XI_SECURE_FILE_TRANSFER_ENABLED
-    bool "Over The Air updates"
+    bool "Over The Air Updates"
     default y
     depends on XIVELY_CLIENT
+
+config XI_TLS_BSP
+    string "TLS Library"
+    default mbedtls
+    depends on XIVELY_CLIENT
+    help
+        Options: mbedtls || wolfssl
+
+        WolfSSL requires manual license approval and compilation:
+        cd xively-client-c && make PRESET=ESP32 XI_BSP_TLS=wolfssl
 
 #config XI_MODULE_THREAD_ENABLED
 #    bool "Thread Safety"
